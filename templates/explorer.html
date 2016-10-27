@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>Demo Explorer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+<style>
+body {
+	padding-top: 60px;
+	/* 60px to make the container go all the way to the bottom of the topbar */
+}
+</style>
+<link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/common.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<link rel="shortcut icon" href="{{STATIC_URL}}img/alpha.png">
+</head>
+
+<body>
+
+	<div class="hidden">
+
+		<div class="httpfile">
+			<a class="close">×</a>
+			<div class="row show-grid">
+				<div class="span2">
+					<div class="control-group">
+						<div class="controls">
+							<input class="input-medium fakeinputname" type="text">
+						</div>
+					</div>
+				</div>
+
+				<div class="span3">
+					<div class="control-group">
+						<div class="controls">
+							<input class="input-file realinputvalue" multiple="" type="file">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="httpparameter">
+			<a class="close">×</a>
+			<div class="row show-grid">
+				<div class="span2">
+					<div class="control-group">
+						<div class="controls">
+							<input class="input-medium fakeinputname" type="text">
+						</div>
+					</div>
+				</div>
+
+				<div class="span3">
+					<div class="control-group">
+						<div class="controls">
+							<!-- <textarea class="input-xlarge realinputvalue" rows="2"></textarea>-->
+							<input class="input-xlarge realinputvalue" type="text">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">OpenPy</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>
+		<li><a href= "/signup">Sign up</a></li>  
+		<li><a href="/documentation">Documentation</a></li>            
+		<li><a href="/explorer">Explorer</a></li>
+              
+	      
+	     
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+	<div class="container">
+
+		<div class="row show-grid">
+			<div id="leftcolumn" class="span6">
+				<form method="GET" action="http://{{ip}}:{{port}}/python/package/" enctype="" id="paramform" class="well" target="outputframe">
+					<fieldset>
+						<legend>HTTP request options</legend>
+
+						<br>
+
+
+						<div class="row show-grid">
+							<div class="span1">
+								<div class="control-group">
+									<label class="control-label" for="httpmethod">Method</label>
+									<div class="controls">
+										<select class="input-small" id="httpmethod">
+											<option selected="selected">GET</option>
+											<option>POST</option>
+											<option>DELETE</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div class="span4">
+
+
+								<div class="control-group">
+									<label class="control-label" for="urlvalue">End point</label>
+									<div class="controls">
+										<input class="input-xlarge" id="urlvalue" value="http://{{ip}}:{{port}}/python/package/" type="text">
+									</div>
+								</div>
+
+
+
+							</div>
+						</div>
+
+						<p class="help-block">Method and Endpoint are required. Click
+							below to add additional parameters.</p>
+
+						<div id="allparameters">
+
+							<div class="row show-grid">
+								<div class="span2">
+									<div class="control-group">
+										<label class="control-label">Parameter Name</label>
+									</div>
+								</div>
+
+								<div class="span3">
+									<div class="control-group">
+										<label class="control-label">Parameter Value</label>
+									</div>
+								</div>
+							</div>
+
+						</div>
+
+						<div align="left">
+							<button id="addprambutton" class="btn btn-primary">
+								<i class="icon-plus icon-white"></i> Add parameter
+							</button>
+							<button id="addfilebutton" class="btn btn-primary">
+								<i class="icon-file icon-white"></i> Add file
+							</button>
+						</div>
+						<br>
+
+						<div align="right">
+							<button id="submitform" class="btn btn-success">
+								<i class="icon-share icon-white"></i> Request (form)
+							</button>
+							<img style="display: none;" src="{{STATIC_URL}}img/spinner.gif" id="formspinner">
+							<button id="submitajax" class="btn btn-success btn-large">
+								<i class="icon-download-alt icon-white"></i> Request (ajax)
+							</button>
+							<img style="display: none;" src="{{STATIC_URL}}img/spinner.gif" id="ajaxspinner">
+						</div>
+					</fieldset>
+				</form>
+
+				<div id="errordiv"></div>
+
+				
+
+
+			</div>
+
+			<div class="span6">
+				<div style="display: block;" id="ajaxoutput">
+					<pre class="alert-success" id="statuspre">HTTP 200 OK</pre>
+					<pre class="pre-scrollable prettyprint linenums" id="outputpre"></pre>
+					<pre class="pre-scrollable prettyprint linenums" id="headerpre">Server: nginx/1.1.19
+Date: Sun, 16 Feb 2014 15:34:18 GMT
+Content-Type: text/html
+Content-Length: 2040
+Last-Modified: Tue, 15 May 2012 20:02:25 GMT
+Etag: "283003-1aa3-4c018ae6d7640"
+Accept-Ranges: bytes
+Vary: Accept-Encoding
+Content-Encoding: gzip
+</pre>
+				</div>
+
+				<iframe src="" style="display: none;" name="outputframe" id="outputframe" class="input-xxlarge"></iframe>
+			</div>
+		</div>
+
+		<br>
+
+
+	</div>
+	<!-- /container -->
+
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="{{STATIC_URL}}js/jquery-1.js"></script>
+	<script src="{{STATIC_URL}}js/bootstrap.js"></script>
+	<script src="{{STATIC_URL}}js/common.js"></script>
+	<script src="{{STATIC_URL}}js/explorer.js"></script>
+
+
+</body></html>

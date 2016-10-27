@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>OpenPy Documentation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Le styles -->
+<link href="{{STATIC_URL}}css/bootstrap.css" rel="stylesheet">
+<style>
+body {
+	padding-top: 60px;
+	/* 60px to make the container go all the way to the bottom of the topbar */
+}
+</style>
+<link href="{{STATIC_URL}}css/bootstrap-responsive.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/common.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/bootstrap-hacks.css" rel="stylesheet">
+<link href="{{STATIC_URL}}css/docs.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<link rel="shortcut icon" href="{{STATIC_URL}}img/alpha.png">
+</head>
+
+<body data-spy="scroll" data-target="#subnav" data-offset="50">
+
+	<!-- Some hidden elements that will be cloned when needed -->
+	<div class="hidden">
+		<div class="httpfile">
+			<a class="close">×</a>
+			<div class="row show-grid">
+				<div class="span2">
+					<div class="control-group">
+						<div class="controls">
+							<input class="input-medium fakeinputname" type="text">
+						</div>
+					</div>
+				</div>
+
+				<div class="span3">
+					<div class="control-group">
+						<div class="controls">
+							<input class="input-file realinputvalue" multiple="" type="file">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="httpparameter">
+			<a class="close">×</a>
+			<div class="row show-grid">
+				<div class="span2">
+					<div class="control-group">
+						<div class="controls">
+							<input class="input-medium fakeinputname" type="text">
+						</div>
+					</div>
+				</div>
+
+				<div class="span3">
+					<div class="control-group">
+						<div class="controls">
+							<!-- <textarea class="input-xlarge realinputvalue" rows="2"></textarea>-->
+							<input class="input-xlarge realinputvalue" type="text">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- End of hidden stuff -->
+
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	    <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/">OpenPy</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="/">Home</a></li>
+		<li><a href= "/signup">Sign up</a></li>              
+		<li><a href="/documentation">Documentation</a></li>		
+		<li><a href="/explorer">Explorer</a></li>
+              
+	      
+	      
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+	<!-- subnav, mostly invisible -->
+	<div style="display: none;" id="subnav" class="subnav subnav-fixed">
+		<ul class="nav nav-pills">
+			<li class="active"><a href="#introduction">Intro</a></li>
+			<li><a href="#auth-api">Authentication</a></li>
+			<li class=""><a href="#Python-api">/python</a></li>
+			<li class=""><a href="#Python-pub">/python/package/ </a></li>
+			<li><a href="#Python-tmp">/python/tmp/</a></li>
+			<li><a href="#Python-user">/python/profile/</a></li>
+			<li><a href="#arguments">Arguments</a></li>
+			<li><a href="#formats">Output Formats</a></li>
+			
+			<!--<li><a href="#CORS">CORS</a></li>
+			<li><a href="#caching">Caching</a></li>-->
+		</ul>
+	</div>
+
+	<div class="container">
+
+		<header class="jumbotron masthead" id="overview">
+
+			<h1>Documentation</h1>
+			<hr>
+		</header>
+
+		<div class="row">
+			<div id="menucolumn" class="span3">
+				<div class="well">
+					<ul class="nav nav-list">
+						<li class="active"><a href="#introduction">Introduction</a></li>
+						<li><a href="#auth-api">Authentication</a></li>
+						<li class=""><a href="#Python-api">Public API</a></li>
+						<li class=""><a href="#Python-pub">Public Packages </a></li>
+						<li><a href="#Python-tmp">Temp directory</a></li>
+						<li><a href="#Python-user">Profile</a></li>
+						<li><a href="#arguments">Arguments</a></li>
+						<li><a href="#formats">Output Formats</a></li>
+						
+					</ul>
+				</div>
+				<!--/.well -->
+			</div>
+			<!--/span-->
+
+			<div class="span9 marketing">
+
+				<div class="row">
+
+					<div class="span3">
+						<img class="bs-icon" src="{{STATIC_URL}}img/glyphicons_042_group.png">
+						<h2>Introduction</h2>
+						<p>A quick introduction about how and why of OpenPy.</p>
+					</div>
+
+					<div class="span3">
+						<img class="bs-icon" src="{{STATIC_URL}}img/glyphicons_042_group.png">
+						<h2>Python API</h2>
+						<p>The core of OpenPy is a REST API to Python. Through the API you can execute Python code on OpenPy servers. You can also upload your own python packages to the OpenPy servers.</p>
+					</div>
+
+					<div class="span3">
+						<img class="bs-icon" src="{{STATIC_URL}}img/glyphicons_042_group.png">
+						<h2>Methods &amp; Endpoints</h2>
+						<p>OpenPy uses HTTP methods GET, POST and DELETE. What
+							do they mean, and where can they be used?</p>
+					</div>
+
+				</div>
+				<div class="row">
+
+					<div class="span3">
+						<img class="bs-icon" src="{{STATIC_URL}}img/glyphicons_042_group.png">
+						<h2>Output Formats</h2>
+						<p>A Python function might return an integer, a string, a dictionary, a set, a list and self defined data types. Use one of the specified output formats to get the output you need.</p>
+					</div>
+
+
+
+					<div class="span3">
+						<img class="bs-icon" src="{{STATIC_URL}}img/glyphicons_042_group.png">
+						<h2>Arguments</h2>
+						<p>There are quite a few ways in which arguments to function calls can be specified.</p>
+					</div>
+
+					<div class="span3">
+						<img class="bs-icon" src="{{STATIC_URL}}img/glyphicons_079_podium.png">
+						<h2>Caching</h2>
+						<p>OpenPy makes use of caching if required.</p>
+					</div>
+					
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+
+		
+				<section id="introduction">
+					<div class="page-header">
+						<h1>
+							Introduction <small> the big picture</small>
+						</h1>
+					</div>
+
+					<p>
+						OpenPy provides a REST API to <a href="http://www.python.org/">Python language</a>. One of
+						the goals is to be able to use Python functionality in scalable systems and web applications, without requiring the user or system to install Python.
+					</p>
+
+					<p>
+						OpenPy deals with some of the techincalities that come with Python, so that you can focus on your application. Furthermore, OpenPy implements the concept of <i>Open
+							Computing</i>. In a nutshell this comes down to the following:
+					</p>
+					<ul>
+						<li>Any client can execute arbitrary Python code on an OpenPy
+							server.</li>
+						<li>All Python code on the server is by definition Open Source,
+							and readable by anyone.</li>
+						<li>When you publish your own code on the server, it
+							authomatically becomes Open Source.</li>
+					</ul>
+				</section>
+				
+				<section id="auth-api">
+					<div class="page-header">
+						<h1>
+							Authentication 
+						</h1>
+					</div>
+
+					<p class="narrowblock">
+						Everything under /python is public and does not require authentication. However, if you want to keep your stored objects private to yourself and keep an eye on your execution statistics then you can register on OpenPy using your e-mail address. On registering you shall receive a unique Apikey that you have to add in the header of your HTTP Requests.
+						<br><pre class="narrowblock"> APIKEY: &ltapikey&gt </pre>
+						</p>
+						<p>
+						Doing this allows you to keep temporary objects private to yourself and maintain statistics about your usage of the API. OpenPy does stateless profiling that is we do not store anything about the computations done by the user. The only things tracked are the number of requests made, the CPU execution time and the memory usage. You can look up at these statistics at any time.
+						<br><pre class="narrowblock"> GET /python/profile/ </pre>
+					</p>
+
+					
+				</section>
+
+				
+				<section id="Python-api">
+					<div class="page-header">
+						<h1>
+							/python API <small> the core of the framework</small>
+						</h1>
+					</div>
+
+					<h3>Methods</h3>
+					<table class="table table-bordered table-striped">
+
+						<thead>
+							<tr>
+								<th>Method</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="tt">GET</td>
+								<td>List objects or packages.</td>
+							</tr>
+							<tr>
+								<td class="tt">POST</td>
+								<td>Call function.</td>
+							</tr>
+							<tr>
+								<td class="tt">POST</td>
+								<td>Upload new packages.</td>
+							</tr>
+							<tr>
+								<td class="tt">DELETE</td>
+								<td>Delete stored objects.</td>
+							</tr>
+
+						</tbody>
+					</table>
+				
+					
+					<h3>Subdirectories</h3>
+					<table class="table table-bordered table-striped">
+
+						<thead>
+							<tr>
+								<th>Directory</th>
+								<th>Description</th>
+								<th>ApiKey Required</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="tt">/python/package/</td>
+								<td>Public packages, installed by administrator or uploaded by the user.</td>
+								<td>No</td>
+							</tr>
+							<tr>
+								<td class="tt">/python/shared_tmp/</td>
+								<td>Temporary objects.</td>
+								<td>No</td>
+							</tr>
+							<tr>
+								<td class="tt">/python/upload/</td>
+								<td>Uploading user defined packages.</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td class="tt">/python/s_package/</td>
+								<td>Apikey based counterpart of /python/package/.</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td class="tt">/python/tmp/</td>
+								<td>Temporary objects private to the registered user.</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td class="tt">/python/profile/</td>
+								<td>Memory, CPU statistics of a particular user.</td>
+								<td>Yes</td>
+							</tr>
+							
+						</tbody>
+					</table>
+
+					<h3>Status Codes</h3>
+					<table class="table table-bordered table-striped">
+
+						<thead>
+							<tr>
+								<th>Code</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="tt">200 OK</td>
+								<td>Request successful. Output contains what was requested.</td>
+							</tr>
+							<tr>
+								<td class="tt">400 Bad Request</td>
+								<td>Python returned an error. <br>Response body contains
+									error message in plain text format.
+								</td>
+							</tr>
+							<tr>
+								<td class="tt">503 Service Unavailable</td>
+								<td>Server seems down or overloaded.</td>
+							</tr>
+
+						</tbody>
+					</table>
+
+				</section>
+
+				<section id="Python-pub">
+					<div class="page-header">
+						<h1>
+							/python/package API (/python/s_package)<small> publicly available packages</small>
+						</h1>
+					</div>
+
+					<h3>Reading public packages under /python/package</h3>
+
+
+					<p class="narrowblock">List available packages on the OpenPy
+						server (in json)</p>
+
+					<pre class="narrowblock"> GET /python/package/	</pre>
+					or <p>
+					<pre class="narrowblock"> GET /python/s_package/	</pre>
+					</p>
+					<br>
+
+					<p class="narrowblock">List of available methods in a certain
+						package (in json):</p>
+					<pre class="narrowblock"> GET /python/package/[package name]</pre>
+					or
+					<p>
+					<pre class="narrowblock"> GET /python/s_package/[package name]</pre>
+					</p>
+					<br>
+
+					<p class="narrowblock">Documentation of a method (in json):</p>
+					<pre class="narrowblock"> GET /python/package/[package name]/[method name]</pre>
+					or
+					<p>
+					<pre class="narrowblock"> GET /python/s_package/[package name]/method name</pre>
+					</p>
+					<br>
+					
+					<p class="narrowblock">Requesting the output in a particular format.</p>
+					OpenPy currently supports two output formats: - json and ascii. Not every output is json convertible, hence the user must carefully decide which output format to use when. The user may even choose to store the output on the server itself and usae accordingly. More on this later.
+					<br><br>	
+					<h3>Calling functions from packages</h3>
+					<p class="narrowblock">
+					<pre class="narrowblock"> POST /python/package/[package name]/[method name]/[ascii/json/save]</pre>
+					or
+					<p>
+					<pre class="narrowblock"> POST /python/s_package/[package name]/method name/[ascii/json/save]</pre>
+					</p>
+					<br>
+					
+					<br> 
+
+				</section>
+
+				<section id="Python-tmp">
+					<div class="page-header">
+						<h1>
+							/python/s_tmp API (/python/tmp) <small>Reading and calling in the temp dir</small>
+						</h1>
+					</div>
+
+					<p class="narrowblock">
+					
+						The cleanest way to use OpenPy is to use the output type
+						<code>/save</code>
+						for your function calls. This output type stores outputs from a
+						function call in the
+						<code>/python/s_tmp </code> or <code>/python/tmp</code> depending on whether you are using an Apikey or not.
+						On storing the result, a handle is returned for the object. This handle can be passed as argument to subsequent functions or it can be accessed using a call to the API. 
+					</p>
+					<p>
+					<pre class="narrowblock"> GET /python/s_tmp/[hashkey]/[output format]</pre>
+					</p>
+					or
+					<p>
+					<pre class="narrowblock"> GET /python/tmp/[hashkey]/[output format]</pre>
+					</p>
+					<p>The API also allows you to see the handles of all the objects saved in the tmp.</p>
+					<p>
+					<pre class="narrowblock"> GET /python/s_tmp/</pre>
+					</p>
+					or
+					<p>
+					<pre class="narrowblock"> GET /python/tmp/</pre>
+					</p>
+					<br>
+
+				</section>
+
+				<section id="Python-user">
+					<div class="page-header">
+						<h1>
+							/python/profile API <small>User statistics</small>
+						</h1>
+						</div>
+						<p>
+						The user can look up the number of requests made on his behalf, the CPU time taken up by the requests and the memory needed to process the requests.
+					</p>
+					<pre class="narrowblock"> GET /python/user	</pre>
+					<br>
+				</section>
+
+				<section id="user-uploaded packages">
+					<div class="page-header">
+						<h1>
+							/python/upload API <small>Uploading user packages</small>
+						</h1>
+					</div>
+						<p>
+						Packages in /python/package can only be installed by an OpenPy
+						administrator. However, authenticated users can also publish their
+						own packages. The /python/upload api is for uploading packages which can then be accessed just like other admin installed packages.
+							
+					</p>
+					<pre class="narrowblock"> POST /python/upload	</pre>
+					<br>
+				</section>
+					
+				<section id="arguments">
+					<div class="page-header">
+						<h1>
+							Arguments <small> passing parameters to Python function calls</small>
+						</h1>
+					</div>
+
+
+					<p>The core of OpenPy is the ability to call Python functions
+						through the /python api. When calling functions you need to pass
+						arguments. Some functions have relatively simple arguments, e.g a
+						number or a character string. However in some cases you might need
+						to pass a more complex Python object or data structure in a function
+						call. In order to accomplish this, there are a number of ways to
+						specify function arguments in OpenPy.</p>
+
+					<p>There are basically 2 ways in which an argument can be
+						passed to OpenPy:</p>
+					<ul>
+						<li>A primitive value</li>
+						<li>A hashkey of a valid object in /python/tmp or /python/s_tmp</li>
+						
+					</ul>
+
+					<h3>Arguments: Primitive values</h3>
+					<p class="narrowblock">
+						A primitive value can either be a number e.g.
+						<code>3.1415</code>
+						, a character string wrapped in single / double quotes e.g.
+						<code>"my title"</code>
+						, or a boolean e.g.
+						<code>True</code>. For boolean or <code>null</code> type values. Pass them as a string and OpenPy will handle the rest. Same is the case for the object handle. pass it as a string and you are done.
+						.
+					</p>
+
+					<h3>Arguments: A hashkey</h3>
+					<p class="narrowblock">
+						If the argument is an object that you previously calculated on the
+						same OpenPy server using the
+						<code>/save</code>
+						output format, then you can pass the hashkey on to the next
+						function call.
+					</p>
+
+					
+					<br>
+
+				</section>
+
+				<section id="formats">
+					<div class="page-header">
+						<h1>
+							Output formats <small> Getting output from Python </small>
+						</h1>
+					</div>
+
+					<p>
+						Calling a Python function can result in many outputs. However, almost all outputs are json convertible so you can use json to get the output of almost all python function. For the remaining ones, we have ascii to the rescue.
+					</p>
+
+	
+
+				</section>
+
+				<br>
+
+	
+				
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+	<br>
+
+	<!-- /container -->
+
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="{{STATIC_URL}}js/jquery-1.js"></script>
+	<script src="{{STATIC_URL}}js/bootstrap.js"></script>
+	<script src="{{STATIC_URL}}js/common.js"></script>
+	<script src="{{STATIC_URL}}js/docs.js"></script>
+	<script src="{{STATIC_URL}}js/doc-examples.js"></script>
+
+
+
+</body></html>

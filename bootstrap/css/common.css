@@ -1,0 +1,50 @@
+/*     Please refer to the license file for complete details.
+ *
+ *       Project: OpenPy
+ *       Developer: Yash Lamba
+ *       Institute: Indraprastha Institute of Information Technology, Delhi
+ *       Advisor: Pandarasamy Arjunan, Dr. Pushpendra Singh
+ */
+
+.brand
+{
+  background: url(images/opencpulogo.png) no-repeat left center;
+  height: 20px;
+  width: 100px;
+}
+
+.nav-collapse .nav.pull-right{
+  display: none;
+  margin-right: 400px;
+}
+
+#outputframe{
+  height: 600px;
+  border: 1px lightgray solid;  
+}
+
+#outputpre{
+  min-height: 200px;
+}
+
+#headerpre{
+  min-height: 100px;
+}
+
+#allparameters{
+  display: none;
+}
+
+#formspinner, #ajaxspinner, #outputframe{
+  display: none;
+}
+
+.cookiebutton{
+	float: right;
+}
+
+#submitform,#submitblank{
+	margin-right: 5px;
+	margin-bottom: -10px;
+}
+
